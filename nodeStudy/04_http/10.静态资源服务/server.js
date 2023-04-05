@@ -27,9 +27,18 @@ const server = http.createServer((request,response)=>{
 
     fs.readFile(filePath,(error,data) =>{
         if(error){
-            response.statusCode = 500
-            response.end("文件读取失败")
+            switch (error.code){
+                case 'ENOENT':
+                    response.statusCode = 404
+                    response.end('<h1> 404 Not Found</h1>')
+                case 'EPERM':
+                    response.statusCode = 403
+                    response.end('<h1>403 Forbidden</h1>')  
+            }
             return
+            // response.statusCode = 500
+            // response.end("文件读取失败")
+            // return
         }
         //获取文件后缀名
         let ext = path.extname(filePath).slice(1)
