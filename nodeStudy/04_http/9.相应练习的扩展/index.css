@@ -1,0 +1,13 @@
+td{ 
+    padding: 20px 40px;
+}
+/* 对奇数和偶数的行 进行换色 */
+table tr:nth-child(odd){
+    background-color: aquamarine;
+}
+table tr:nth-child(even){
+    background-color: burlywood;
+}
+table,td{
+    border-collapse: collapse;
+}

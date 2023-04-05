@@ -11,7 +11,7 @@ const server = http.createServer((request,response)=>{
     let {pathname} = new URL(request.url,'http://127.0.0.1')    
     // 解决中文乱码   
     response.setHeader('content-type','text/html;charset=utf-8')
-            
+                
     if (pathname === '/login' && method === 'GET'){
         response.end('这是登录页面')
     }else if(pathname === '/register' && method === 'GET'){
